@@ -1,0 +1,4 @@
+<div class="reservations-container">
+  <app-my-reservations *ngIf="isReservation"></app-my-reservations>
+  <app-vehicles-available *ngIf="!isReservation"></app-vehicles-available>
+</div>

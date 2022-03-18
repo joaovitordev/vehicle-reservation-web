@@ -1,0 +1,21 @@
+.header-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  margin: 25px;
+
+  .logo {
+    width: 180px;
+  }
+
+  .username {
+    font-size: 14px;
+    margin: 0;
+
+    span {
+      font-weight: 500;
+    }
+  }
+}
