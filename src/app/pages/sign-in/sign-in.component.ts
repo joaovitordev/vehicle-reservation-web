@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { SignUpComponent } from '../sign-up/sign-up.component';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -14,6 +15,7 @@ export class SignInComponent implements OnInit {
   constructor(
     private dialog: MatDialog,
     private formBuilder: FormBuilder,
+    private userService: UserService,
     public dialogRef: MatDialogRef<SignInComponent>,
   ) { }
 
@@ -36,8 +38,18 @@ export class SignInComponent implements OnInit {
 
     this.dialog.open(SignUpComponent, {
       width: '25%',
-      height: '50%',
+      height: '60%',
     });
+  }
+
+  async onSubmit() {
+    const user = this.form.getRawValue()
+
+    await this.userService.signIn(user).toPromise().then((res: any) => {
+      this.dialogRef.close();
+      localStorage.setItem('accessToken', res.accessToken);
+      localStorage.setItem('userId', res._id);
+    })
   }
 
 }

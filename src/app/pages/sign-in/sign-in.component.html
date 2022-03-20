@@ -1,6 +1,6 @@
 <div class="container-sign-in" fxLayout="column" fxLayoutAlign="center center">
   <img class="logo" src="assets/logo.png" alt="">
-  <form [formGroup]="form" class="form" fxLayout="column">
+  <form [formGroup]="form" (submit)="onSubmit()" class="form" fxLayout="column">
     <mat-form-field class="example-full-width" appearance="outline" fxFlex="100%">
       <mat-label>Email</mat-label>
       <input formControlName='email' matInput placeholder="email@email.com" value="">
@@ -14,7 +14,7 @@
         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
     </mat-form-field>
-    <button fxFlex="100%" mat-flat-button color="primary">Acessar</button>
+    <button fxFlex="100%" mat-flat-button type="submit" color="primary">Acessar</button>
     <div fxFlex="100%" fxLayoutAlign="center center">
       <span (click)="goToSignUp()" class="sign-up">Cadastre-se</span>
     </div>

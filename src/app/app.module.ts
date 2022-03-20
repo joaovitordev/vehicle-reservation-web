@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 
 import { ShareModule } from './shared/share.module';
 
+import { HttpClientModule } from '@angular/common/http'
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MyReservationsComponent } from './pages/home/reservations/my-reservations/my-reservations.component';
@@ -14,6 +16,9 @@ import { ReservationsComponent } from './pages/home/reservations/reservations.co
 import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { HomeComponent } from './pages/home/home.component';
+
+import { UserService } from '../app/services/user.service';
+import { VehicleService } from '../app/services/vehicle.service';
 
 @NgModule({
   declarations: [
@@ -30,8 +35,9 @@ import { HomeComponent } from './pages/home/home.component';
     AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [UserService, VehicleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

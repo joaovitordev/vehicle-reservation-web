@@ -9,8 +9,8 @@
           {{ car.description }}
       </mat-card-content>
       <mat-card-actions align="end">
-          <button color="primary" mat-button>
-            <span>Reservar</span>
+          <button color="primary" (click)="booking(car._id)" mat-button>
+            <span *ngIf="!car.user">Reservar</span>
           </button>
       </mat-card-actions>
   </mat-card>

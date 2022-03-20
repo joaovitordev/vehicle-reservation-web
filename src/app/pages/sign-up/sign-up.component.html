@@ -1,6 +1,11 @@
 <div class="container-sign-in" fxLayout="column" fxLayoutAlign="center center">
   <img class="logo" src="assets/logo.png" alt="">
-  <form [formGroup]="form" class="form" fxLayout="column">
+  <form [formGroup]="form" class="form" (submit)="onSubmit()" fxLayout="column">
+    <mat-form-field class="example-full-width" appearance="outline" fxFlex="100%">
+      <mat-label>Nome</mat-label>
+      <input formControlName='name' matInput value="">
+      <mat-error *ngIf="form.controls.name.errors?.required">Informe o nome</mat-error>
+    </mat-form-field>
     <mat-form-field class="example-full-width" appearance="outline" fxFlex="100%">
       <mat-label>Email</mat-label>
       <input formControlName='email' matInput placeholder="email@email.com" value="">
@@ -14,7 +19,7 @@
         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
     </mat-form-field>
-    <button fxFlex="100%" mat-flat-button color="primary">Cadastrar</button>
+    <button fxFlex="100%" mat-flat-button  type="submit" color="primary">Cadastrar</button>
     <div fxFlex="100%" fxLayoutAlign="center center">
       <span (click)="goToSignIn()" class="sign-up">Faça login</span>
     </div>
