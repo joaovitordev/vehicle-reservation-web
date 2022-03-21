@@ -13,7 +13,10 @@ export class VehicleService {
   constructor(private http: HttpClient) {}
 
   getVehicles(): Observable<any> {
-    return this.http.get<any>(this.apiServer + '/vehicles');
+    return this.http.get(`${this.apiServer}/vehicles`);
   }
 
+  createVehicles(): Observable<any> {
+    return this.http.post(`${this.apiServer}/vehicles`, {})
+  }
 }

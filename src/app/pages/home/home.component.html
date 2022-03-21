@@ -3,7 +3,7 @@
   <button color="primary" *ngIf="!isUser()" (click)="openModal()" mat-button>
     Login
   </button>
-  <div fxLayout="row" *ngIf="isUser()" fxLayoutGap="3%">
+  <div fxLayout="row" *ngIf="isUser()">
     <button color="primary" (click)="myReservations()" mat-raised-button>
       Minhas Reservas
     </button>

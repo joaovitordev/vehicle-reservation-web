@@ -25,7 +25,20 @@ export class VehiclesAvailableComponent implements OnInit {
   }
 
   async getVehicles() {
-    this.vehicles = await this.vehiclesService.getVehicles().toPromise()
+    this.vehicles = await this.vehiclesService.getVehicles().toPromise();
+
+    this.createVehiclesDefault(this.vehicles);
+
+  }
+
+  async createVehiclesDefault(vehicles: any) {
+    if(vehicles.length) {
+      return;
+    }
+
+    await this.vehiclesService.createVehicles().toPromise();
+    this.getVehicles();
+
   }
 
   async booking(vehicleId: string) {

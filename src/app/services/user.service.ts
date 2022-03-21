@@ -11,13 +11,11 @@ export class UserService {
 
   private apiServer = 'http://localhost:3000';
 
-  constructor(private http: HttpClient) {
-    const params = new HttpParams()
-  }
+  constructor(private http: HttpClient) {}
 
 
   signUp(signUp: UserModel): Observable<any> {
-    return this.http.post(this.apiServer + '/user/signUp', signUp);
+    return this.http.post(`${this.apiServer}/user/signUp`, signUp);
   }
 
   signIn(signIn: Partial<UserModel>): Observable<any>  {
