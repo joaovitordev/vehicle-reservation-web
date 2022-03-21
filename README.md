@@ -1,8 +1,11 @@
 # Joaobooking
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.4.
+Projeto desenvolvido com Angular versão 11.2.4.
 
-## Development server
+## Rodar projeto
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Instale as dependências com o `npm i`
+
+e depois rode `ng-serve`, seu projeto estará disponível na porta `http://localhost:4200/`
+
 
