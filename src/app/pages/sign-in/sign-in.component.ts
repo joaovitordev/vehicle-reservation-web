@@ -41,7 +41,7 @@ export class SignInComponent implements OnInit {
 
     this.dialog.open(SignUpComponent, {
       width: '25%',
-      height: '65%',
+      height: '70%',
     });
   }
 
@@ -55,9 +55,9 @@ export class SignInComponent implements OnInit {
     await this.userService.signIn(user).toPromise().then((res: any) => {
       this.dialogRef.close();
       this.setUserLocalStorage(res);
-      this.openSnackBar('Bem vindo!', 'Sucesso',)
+      this.openSnackBar(`Bem vindo ${res.name}!`, 'Sucesso',)
     }).catch(err => {
-
+      this.openSnackBar(err.error.error, 'Erro',)
     })
   }
 

@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
   openModal() {
     this.dialog.open(SignInComponent, {
       width: '25%',
-      height: '50%',
+      height: '55%',
     });
   }
 

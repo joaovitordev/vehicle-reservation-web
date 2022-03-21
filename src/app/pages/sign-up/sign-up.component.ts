@@ -44,7 +44,7 @@ export class SignUpComponent implements OnInit {
 
     this.dialog.open(SignInComponent, {
       width: '25%',
-      height: '50%',
+      height: '55%',
     });
   }
 
