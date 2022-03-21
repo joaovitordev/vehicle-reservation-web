@@ -7,7 +7,7 @@
       </p>
   </div>
 
-  <div fxLayoutGap="3%">
+  <div fxLayoutGap="3%" fxLayout.gt-sm="row" fxLayout="column">
     <mat-card [class.vehicle-is-user]="vehicle.user" *ngFor="let vehicle of vehicles" class="card" fxFlex="20%">
         <mat-card-header>
             <mat-card-title>{{ vehicle.model }}</mat-card-title>
