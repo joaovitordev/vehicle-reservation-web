@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 export class UserService {
 
   private apiServer = 'http://localhost:3000';
+  public token = localStorage.getItem('accessToken');
 
   constructor(private http: HttpClient) {}
 
@@ -23,8 +24,7 @@ export class UserService {
   }
 
   myBooking(userId: string): Observable<any>  {
-    const token = localStorage.getItem('accessToken')
-    return this.http.get(`${this.apiServer}/user/${userId}/vehicles`, { headers: { 'Authorization': token } })
+    return this.http.get(`${this.apiServer}/user/${userId}/vehicles`, { headers: { 'Authorization': this.token } })
   }
 
 }
