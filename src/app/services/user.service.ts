@@ -20,11 +20,11 @@ export class UserService {
     return this.http.post(this.apiServer + '/user/signUp', signUp);
   }
 
-  signIn(signIn: Partial<UserModel>) {
+  signIn(signIn: Partial<UserModel>): Observable<any>  {
     return this.http.post(`${this.apiServer}/user/signIn`, signIn);
   }
 
-  myBooking(userId: string) {
+  myBooking(userId: string): Observable<any>  {
     const token = localStorage.getItem('accessToken')
     return this.http.get(`${this.apiServer}/user/${userId}/vehicles`, { headers: { 'Authorization': token } })
   }

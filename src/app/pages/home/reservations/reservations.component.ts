@@ -9,8 +9,6 @@ export class ReservationsComponent implements OnInit {
 
   constructor() { }
 
-  isReservation = false;
-
   ngOnInit(): void {
   }
 

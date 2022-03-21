@@ -1,6 +1,18 @@
 <header class="header-container" fxLayout="row">
   <img class="logo" loading="lazy" src="/assets/logo.png" alt="Logo João Booking">
-  <p (click)="openModal()" class="username">Olá, <span>{{ username }}</span></p>
+  <button color="primary" *ngIf="!isUser()" (click)="openModal()" mat-button>
+    Login
+  </button>
+  <div fxLayout="row" *ngIf="isUser()" fxLayoutGap="3%">
+    <button color="primary" (click)="myReservations()" mat-raised-button>
+      Minhas Reservas
+    </button>
+    <button color="primary"  (click)="logout()" mat-button>
+      Sair
+    </button>
+  </div>
 </header>
 
-<router-outlet></router-outlet>
+<div class="home-container">
+  <router-outlet></router-outlet>
+</div>

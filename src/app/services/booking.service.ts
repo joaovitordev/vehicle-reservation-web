@@ -13,13 +13,12 @@ export class BookingService {
 
   booking(booking: any): Observable<any> {
     const token = localStorage.getItem('accessToken')
-    return this.http.post(`${this.apiServer}/booking`, booking,  { headers: { 'Authorization': token }})
+    return this.http.post(`${this.apiServer}/booking`, booking, { headers: { 'Authorization': token }})
   }
 
   unbooking(userId: string): Observable<any> {
     const token = localStorage.getItem('accessToken')
-
-    return this.http.delete(`${this.apiServer}/user/${userId}/vehicles`, { headers: { 'Authorization': token } })
+    return this.http.delete(`${this.apiServer}/user/${userId}/vehicles`, { headers: { 'Authorization': token }})
   }
 
 }

@@ -1,6 +1,5 @@
 import { UserService } from './../../services/user.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { SignInComponent } from '../sign-in/sign-in.component';
 
@@ -20,7 +19,6 @@ export class SignUpComponent implements OnInit {
 
   constructor(
     private dialog: MatDialog,
-    private router: Router,
     private formBuilder: FormBuilder,
     private userService: UserService,
     public dialogRef: MatDialogRef<SignInComponent>,
@@ -52,6 +50,11 @@ export class SignUpComponent implements OnInit {
 
   async onSubmit() {
     const user: UserModel = this.form.getRawValue();
+
+    if(!this.form.valid) {
+      return;
+    }
+
     await this.userService.signUp(user).toPromise().then(() => {
       this.dialogRef.close();
 

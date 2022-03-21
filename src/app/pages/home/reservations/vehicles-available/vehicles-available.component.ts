@@ -1,8 +1,9 @@
-import { UserService } from 'src/app/services/user.service';
 import { Component, OnInit } from '@angular/core';
 
 import { VehicleService } from '../../../../services/vehicle.service';
 import { BookingService } from 'src/app/services/booking.service';
+
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-vehicles-available',
@@ -14,18 +15,17 @@ export class VehiclesAvailableComponent implements OnInit {
   constructor(
     private vehiclesService: VehicleService,
     private bookingService: BookingService,
-    private userService: UserService
+    private snackBar: MatSnackBar
   ) { }
 
-  cars;
+  vehicles: any;
 
   ngOnInit(): void {
     this.getVehicles();
   }
 
   async getVehicles() {
-    this.cars = await this.vehiclesService.getVehicles().toPromise()
-    console.log(this.cars)
+    this.vehicles = await this.vehiclesService.getVehicles().toPromise()
   }
 
   async booking(vehicleId: string) {
@@ -36,8 +36,22 @@ export class VehiclesAvailableComponent implements OnInit {
       accessToken: localStorage.getItem('accessToken')
     }
 
-    await this.bookingService.booking(request).toPromise().then((res) => {
-      console.log(res)
+    if(!request.userId) {
+      this.openSnackBar('Faça o login para poder reservar', 'Erro');
+      return;
+    }
+
+    await this.bookingService.booking(request).toPromise().then(() => {
+      this.openSnackBar('Reserva realizada', 'Sucesso');
+      this.getVehicles();
+    }).catch((res => {
+      this.openSnackBar(res.error.error, 'Erro')
+    }))
+  }
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 3000
     })
   }
 
