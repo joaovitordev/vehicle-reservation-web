@@ -54,11 +54,19 @@ export class SignInComponent implements OnInit {
 
     await this.userService.signIn(user).toPromise().then((res: any) => {
       this.dialogRef.close();
-      this.setUserLocalStorage(res);
-      this.openSnackBar(`Bem vindo ${res.name}!`, 'Sucesso',)
+      this.clearLocalStorage(res);
+      this.openSnackBar(`Bem vindo ${res.name}!`, 'Sucesso')
+      window.location.reload()
     }).catch(err => {
       this.openSnackBar(err.error.error, 'Erro',)
     })
+  }
+
+  clearLocalStorage(user) {
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('userId');
+
+    this.setUserLocalStorage(user)
   }
 
   setUserLocalStorage(user) {
