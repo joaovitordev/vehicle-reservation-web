@@ -58,7 +58,7 @@ export class VehiclesAvailableComponent implements OnInit {
       this.openSnackBar('Reserva realizada', 'Sucesso');
       this.getVehicles();
     }).catch((res => {
-      this.openSnackBar('Erro ao reservar', 'Erro')
+      this.openSnackBar(res.error.error, 'Erro')
     }))
   }
 
