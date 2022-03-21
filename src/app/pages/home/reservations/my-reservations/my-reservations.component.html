@@ -15,7 +15,8 @@
       </mat-card-actions>
   </mat-card>
 
-  <div *ngIf="!isVehicle(vehicle)" class="not-vehicles">
+  <div *ngIf="!isVehicle(vehicle)" class="not-vehicles" fxLayout="column" fxLayoutAling="center center">
+    <img width="200px" style="margin-left: -33px;" src="assets/no-data.png" alt="">
     <span>Você não possuí reservas</span>
   </div>
 
